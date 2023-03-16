@@ -5,7 +5,7 @@ const app = fastify();
 app.get('/', (req, res) => {
     return {
         user: 'David Anderson',
-        email: 'davidsmendess@gmail.com'
+        email: 'david******gmail.com'
     }
 });
 
