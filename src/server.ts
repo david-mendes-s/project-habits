@@ -1,13 +1,9 @@
 import fastify from "fastify";
+import { userRoutes } from "./users.routes";
 
 const app = fastify();
 
-app.get('/', (req, res) => {
-    return {
-        user: 'David Anderson',
-        email: 'david******gmail.com'
-    }
-});
+app.register(userRoutes);
 
 /*
 Os exemplos acima e os exemplos subseqüentes neste documento são padronizados 
@@ -16,4 +12,5 @@ interfaces IPv4 disponíveis, o exemplo deve ser modificado para escutar 0.0.0.0
 reference: 
 https://www.fastify.io/docs/latest/Guides/Getting-Started/#your-first-server
 */
-app.listen({port: 3000, host: '0.0.0.0'});
+
+app.listen({port:3000, host: '0.0.0.0'});
