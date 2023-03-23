@@ -12,9 +12,9 @@ class UsersController {
 
     public async create(request: IUsers, reply: FastifyReply) {
 
-        const { name, age } = request.body;
+        const { name, email, password } = request.body;
 
-        const user = await CreateUserService.execute({name, age});
+        const user = await CreateUserService.execute({name, email, password});
         
         return reply.status(200).send(user);
     }
