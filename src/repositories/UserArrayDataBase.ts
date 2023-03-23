@@ -11,12 +11,9 @@ class UserArrayDataBase implements IRepository{
     }
 
     public async findAll(){
-        console.log(this.users);
-        const user = this.users.map(user => user);
-        return user
+        return this.users.map(user => user);
+        
     }
-
-
 }
 
 export default new UserArrayDataBase;
