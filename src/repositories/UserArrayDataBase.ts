@@ -17,6 +17,7 @@ class UserArrayDataBase implements IRepository{
 
     public async findById(id: string){
         const user = this.users.find(user => user.id === id);
+        console.log(user)
         return user;
     }
 }
