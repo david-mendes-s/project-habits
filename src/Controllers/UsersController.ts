@@ -1,14 +1,20 @@
 import z from "zod";
-import { FastifyRequest, FastifyReply } from "fastify";
+
 
 import IUser from "../DTO/IUserDTO";
+import IUserUpdateDTO from '../DTO/IUserUpdateDTO';
 import CreateUserService from "../Services/CreateUserService";
 import ListUserService from "../Services/ListUserService";
 import UpdateUserServise from "../Services/UpdateUserServise";
 
+import { FastifyRequest as Request, FastifyReply } from "fastify";
 
-type IUsers = FastifyRequest<{
+type IUsers = Request<{
     Body: IUser
+}>
+
+type IUsersUpdate = Request<{
+    Body: IUserUpdateDTO
 }>
 
 class UsersController {
@@ -28,7 +34,7 @@ class UsersController {
         return reply.status(200).send(users);
     }
 
-    public async update(request: IUsers, reply: FastifyReply){
+    public async update(request: IUsersUpdate, reply: FastifyReply){
         const data = request.body;
 
         const user = await UpdateUserServise.execute(data);

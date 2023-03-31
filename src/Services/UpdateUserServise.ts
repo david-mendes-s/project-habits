@@ -1,15 +1,15 @@
 import { merge } from 'lodash';
-import IUser from "../DTO/IUserDTO";
 import UserArrayDataBase from "../repositories/UserArrayDataBase";
+import IUserUpdateDTO from '../DTO/IUserUpdateDTO';
 
 class UpdateUserService{    
-    public async execute(data:IUser){
+    public async execute(data:IUserUpdateDTO){
        
-        if(!data.id){
+        const user = await UserArrayDataBase.findById(data.id);
+
+        if(!user?.id){
             return 'invalid user!'
         }
-
-        const user = await UserArrayDataBase.findById(data.id);
 
         const margeUser = merge(user, data);
 
